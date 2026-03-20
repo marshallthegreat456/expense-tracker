@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import sqlite3
 app = Flask(__name__)
 def get_db():
@@ -16,12 +16,7 @@ def expenses():
    cursor = db.cursor()
    cursor.execute("SELECT * FROM expenses")
    expenses = cursor.fetchall()
-
-   result = ""
-   for expense in expenses:
-       result += f"ID: {expense['id']} | Name {expense['name']} | Amount {expense['amount']}<br>"
-
-   return result if result else "No expenses found"
+   return render_template("expenses.html",expenses=expenses)
 
 if __name__ == "__main__":
     app.run(debug=True)

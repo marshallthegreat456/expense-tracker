@@ -1,0 +1,13 @@
+<html>
+<head>
+    <title>Expense Tracker</title>
+</head>
+<body>
+    <h1>My expenses</h1>
+    {% for expense in expenses %}
+        <p>ID: {{expense['id']}} | Name: {{expense['name']}} | Amount: R{{expense['amount']}}</p>
+
+    {% endfor %}
+</body>
+</html>
+
